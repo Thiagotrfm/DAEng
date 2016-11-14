@@ -13,9 +13,16 @@
 ActiveRecord::Schema.define(version: 20161111023308) do
 
   create_table "users", force: :cascade do |t|
-    t.string   "nickname"
+    t.string   "name"
     t.string   "email"
+    t.string   "fone_number"
+    t.string   "registration"
+    t.string   "cpf"
+    t.string   "course"
+    t.string   "coordenation"
+    t.boolean  "hole"
     t.string   "password_digest"
+    t.string   "remember_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

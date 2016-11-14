@@ -1,14 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Nickname:</strong>
-  <%= @user.nickname %>
+  <strong>Name:</strong>
+  <%= @user.name %>
 </p>
 
 <p>
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
+
+<p>
+	<strong>Curso:</strong>
+	<%= @user.course %>
+</p>
+<% if @user.hole %>
+	<h1> ADM </h1>
+<% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
