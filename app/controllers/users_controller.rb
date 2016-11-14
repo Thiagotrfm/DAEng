@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+		@dire = User.where(coordenation: 'Diretoria')
+		@sports = User.where(coordenation: 'Esportes e Lazer')
+		@comu = User.where(coordenation: 'Comunicacao')
+		@infra = User.where(coordenation: 'Infraestrutura')
+		@prod = User.where(coordenation: 'Infraestrutura')
   end
 
   # GET /users/1

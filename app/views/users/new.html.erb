@@ -1,5 +1,15 @@
-<script> $.material.init() </script>
-<h1>New User</h1>
+<nav class="navbar navbar-dark bg-inverse">
+  <div class="nav navbar-nav">
+    <a class="nav-item nav-link" href="#">Início<span class="sr-only">(current)</span></a>
+		<%= link_to "Equipe", users_path, method: :get, class: "nav-item nav-link active" %>
+    <a class="nav-item nav-link" href="#">Coordenações</a>
+		<% if logged_in? %>
+		<%= link_to "Sair", logout_path(current_user), method: :delete, class: "nav-item nav-link float-xs-right" %>
+		<% end %>
+	</div>
+</nav>
+<% if logged_in? %>
+<div class="form">
 <%= form_for :user, url: '/users' do |f| %>
 	<div class="form-group">
 		<div class="col-md-4">
@@ -31,7 +41,7 @@
 		<%= f.radio_button :course, "Engenharias", class: "custom-control-input" %>
 		<span class="custom-control-indicator"></span>
 		<span class="custom-control-description">Engenharias</span>
-	</label>
+	</label><br>
   <label class="custom-control custom-radio">
     <%= f.radio_button :course, "Engenharia Aeroespacial", class: "custom-control-input" %>
     <span class="custom-control-indicator"></span>
@@ -41,7 +51,7 @@
     <%= f.radio_button :course, "Engenharia Automotiva", class: "custom-control-input" %>
     <span class="custom-control-indicator"></span>
     <span class="custom-control-description">Engenharia Automotiva</span>
-  </label>
+  </label><br>
   <label class="custom-control custom-radio">
     <%= f.radio_button :course, "Engenharia de Energia", class: "custom-control-input" %>
     <span class="custom-control-indicator"></span>
@@ -51,15 +61,15 @@
     <%= f.radio_button :course, "Engenharia de Software", class: "custom-control-input" %>
     <span class="custom-control-indicator"></span>
     <span class="custom-control-description">Engenharia de Software</span>
-  </label>
+  </label><br>
   <label class="custom-control custom-radio">
     <%= f.radio_button :course, "Engenharia Eletrônica", class: "custom-control-input" %>
     <span class="custom-control-indicator"></span>
     <span class="custom-control-description">Engenharia Eletrônica</span>
   </label><br>
 	</div>
-	Coordenação:<br>
 	<div class="form-group col-md-4">
+	Coordenação:<br>
   <label class="custom-control custom-radio">
     <%= f.radio_button :coordenation, "Diretoria", class: "custom-control-input" %>
     <span class="custom-control-indicator"></span>
@@ -83,10 +93,12 @@
   <label class="custom-control custom-radio">
     <%= f.radio_button :coordenation, "Producao", class: "custom-control-input" %>
     <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Podução</span>
+    <span class="custom-control-description">Produção</span>
   </label>
 	</div>
-  <br><br><br><br><br>
+  <br><br><br><br><br><br>
+	<div class="form-group col-md-4">
+	Função:<br>
   <label class="custom-control custom-radio">
     <%= f.radio_button :hole, true, class: "custom-control-input" %>
     <span class="custom-control-indicator"></span>
@@ -97,8 +109,28 @@
     <span class="custom-control-indicator"></span>
     <span class="custom-control-description">Membro</span>
   </label>
-	Password: <%= f.password_field :password %><br>
-	Password Confirmation: <%= f.password_field :password_confirmation %><br>
-	<%= f.submit "Submit", class:"waves-effect waves-light btn"%>
+	</div><br><br><br><br>
+	<div class="form-group">
+		<div class="col-md-4">
+			Password: <%= f.password_field :password, class: "form-control"%><br>
+		</div>
+		<div class="col-md-4">
+			Password Confirmation: <%= f.password_field :password_confirmation, class: "form-control" %><br>
+		</div>
+	</div> <br><br><br><br>
+	<div class="form-group">
+		<div class="col-md-4">
+			<%= link_to "Voltar", users_path, method: :get, class: "btn btn-danger" %>
+		</div>
+		<div class="col-md-4">
+			<%= f.submit "Submit", class:"btn btn-success float-xs-right"%>
+		</div>
+	</div>
+<% end %><br><br>
+</div>
+<% else %>
+<br>
+<div style="display: inline-block" class="alert alert-warning col-md-5" align="middle" role="alert">
+	  <strong>Atenção!</strong> Os membros do diretório não devem se meter onde não são chamados
+</div>
 <% end %>
-<%= button_to 'Voltar', '/users', :method => 'get', class:"waves-effect waves-light btn" %>
