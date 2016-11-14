@@ -5,10 +5,16 @@
     <a class="nav-item nav-link" href="#">Coordenações</a>
     <% if logged_in? %>
     <%= link_to "Sair", logout_path(current_user), method: :delete, class: "nav-item nav-link float-xs-right" %>
+		<% else %>
+    <%= link_to "Login", login_path, method: :get, class: "nav-item nav-link float-xs-right" %>
     <% end %>
   </div>
 </nav>
-<%= button_to 'Novo membro', new_user_path, class: "btn btn-success new-button" %>
+<% if logged_in?%>
+<% if current_user.hole %>
+<%= button_to 'Novo membro', new_user_path, method: :get, class: "btn btn-success new-button" %>
+<% end %>
+<% end %>
 <div class="aa alert alert-info col-md-7" role="alert">
   <strong>Mesa Diretora</strong>
 </div>
@@ -21,8 +27,12 @@
 	  	<div class="card-block">
 	  	  <h5 class="card-title"><%= person.course%></h5>
 	  	  <p class="card-text"><%= person.email%></p>
+				<% if logged_in?%>
+				<% if current_user.hole %>
 				<%= link_to "Excluir", user_path(person), method: :delete, class: "float-xs-right btn btn-danger esp"%>
 				<%= link_to "Editar", edit_user_path(person), class: "float-xs-right btn btn-primary esp"%>
+				<% end %>
+				<% end %>
 				<%= link_to "Info", user_path(person), class: "float-xs-right btn btn-info esp"%>
 	  	</div>
 		</div>	
@@ -41,8 +51,12 @@
       <div class="card-block">
         <h5 class="card-title"><%= person.course%></h5>
         <p class="card-text"><%= person.email%></p>
+        <% if logged_in?%>
+        <% if current_user.hole %>
         <%= link_to "Excluir", user_path(person), method: :delete, class: "float-xs-right btn btn-danger esp"%>
         <%= link_to "Editar", edit_user_path(person), class: "float-xs-right btn btn-primary esp"%>
+				<% end %>
+				<% end %>
         <%= link_to "Info", user_path(person), class: "float-xs-right btn btn-info esp"%>
       </div>
     </div>
@@ -61,8 +75,12 @@
       <div class="card-block">
         <h5 class="card-title"><%= person.course%></h5>
         <p class="card-text"><%= person.email%></p>
+        <% if logged_in?%>
+        <% if current_user.hole %>
         <%= link_to "Excluir", user_path(person), method: :delete, class: "float-xs-right btn btn-danger esp"%>
         <%= link_to "Editar", edit_user_path(person), class: "float-xs-right btn btn-primary esp"%>
+				<% end %>
+				<% end %>
         <%= link_to "Info", user_path(person), class: "float-xs-right btn btn-info esp"%>
       </div>
     </div>
@@ -81,8 +99,12 @@
       <div class="card-block">
         <h5 class="card-title"><%= person.course%></h5>
         <p class="card-text"><%= person.email%></p>
+        <% if logged_in?%>
+        <% if current_user.hole %>
         <%= link_to "Excluir", user_path(person), method: :delete, class: "float-xs-right btn btn-danger esp"%>
         <%= link_to "Editar", edit_user_path(person), class: "float-xs-right btn btn-primary esp"%>
+				<% end %>
+				<% end %>
         <%= link_to "Info", user_path(person), class: "float-xs-right btn btn-info esp"%>
       </div>
     </div>
@@ -101,8 +123,12 @@
       <div class="card-block">
         <h5 class="card-title"><%= person.course%></h5>
         <p class="card-text"><%= person.email%></p>
+        <% if logged_in?%>
+        <% if current_user.hole %>
         <%= link_to "Excluir", user_path(person), method: :delete, class: "float-xs-right btn btn-danger esp"%>
         <%= link_to "Editar", edit_user_path(person), class: "float-xs-right btn btn-primary esp"%>
+				<% end %>
+				<% end %>
         <%= link_to "Info", user_path(person), class: "float-xs-right btn btn-info esp"%>
       </div>
     </div>

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 		@sports = User.where(coordenation: 'Esportes e Lazer')
 		@comu = User.where(coordenation: 'Comunicacao')
 		@infra = User.where(coordenation: 'Infraestrutura')
-		@prod = User.where(coordenation: 'Infraestrutura')
+		@prod = User.where(coordenation: 'Producao')
   end
 
   # GET /users/1
