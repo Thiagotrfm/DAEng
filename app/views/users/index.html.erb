@@ -15,123 +15,28 @@
 <%= button_to 'Novo membro', new_user_path, method: :get, class: "btn btn-success new-button" %>
 <% end %>
 <% end %>
-<div class="aa alert alert-info col-md-7" role="alert">
-  <strong>Mesa Diretora</strong>
-</div>
-<div class="form">
-	<% @dire.each do |person| %>
-		<div class="card col-md-8">
-		  <div class="card-header">
-		    <h5><%= person.name %></h5>
-		  </div>
-	  	<div class="card-block">
-	  	  <h5 class="card-title"><%= person.course%></h5>
-	  	  <p class="card-text"><%= person.email%></p>
-				<% if logged_in?%>
-				<% if current_user.hole %>
-				<%= link_to "Excluir", user_path(person), method: :delete, class: "float-xs-right btn btn-danger esp"%>
-				<%= link_to "Editar", edit_user_path(person), class: "float-xs-right btn btn-primary esp"%>
-				<% end %>
-				<% end %>
-				<%= link_to "Info", user_path(person), class: "float-xs-right btn btn-info esp"%>
-	  	</div>
-		</div>	
-	<% end %>
-</div>
-
-<div class="aa alert alert-info col-md-7" role="alert">
-  <strong>Produção</strong>
-</div>
-<div class="form">
-  <% @prod.each do |person| %>
-    <div class="card col-md-8">
-      <div class="card-header">
-        <h5><%= person.name %></h5>
-      </div>
-      <div class="card-block">
-        <h5 class="card-title"><%= person.course%></h5>
-        <p class="card-text"><%= person.email%></p>
-        <% if logged_in?%>
-        <% if current_user.hole %>
-        <%= link_to "Excluir", user_path(person), method: :delete, class: "float-xs-right btn btn-danger esp"%>
-        <%= link_to "Editar", edit_user_path(person), class: "float-xs-right btn btn-primary esp"%>
-				<% end %>
-				<% end %>
-        <%= link_to "Info", user_path(person), class: "float-xs-right btn btn-info esp"%>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-<div class="aa alert alert-info col-md-7" role="alert">
-  <strong>Comunicação</strong>
-</div>
-<div class="form">
-  <% @comu.each do |person| %>
-    <div class="card col-md-8">
-      <div class="card-header">
-        <h5><%= person.name %></h5>
-      </div>
-      <div class="card-block">
-        <h5 class="card-title"><%= person.course%></h5>
-        <p class="card-text"><%= person.email%></p>
-        <% if logged_in?%>
-        <% if current_user.hole %>
-        <%= link_to "Excluir", user_path(person), method: :delete, class: "float-xs-right btn btn-danger esp"%>
-        <%= link_to "Editar", edit_user_path(person), class: "float-xs-right btn btn-primary esp"%>
-				<% end %>
-				<% end %>
-        <%= link_to "Info", user_path(person), class: "float-xs-right btn btn-info esp"%>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-<div class="aa alert alert-info col-md-7" role="alert">
-  <strong>Infraestrutura</strong>
-</div>
-<div class="form">
-  <% @infra.each do |person| %>
-    <div class="card col-md-8">
-      <div class="card-header">
-        <h5><%= person.name %></h5>
-      </div>
-      <div class="card-block">
-        <h5 class="card-title"><%= person.course%></h5>
-        <p class="card-text"><%= person.email%></p>
-        <% if logged_in?%>
-        <% if current_user.hole %>
-        <%= link_to "Excluir", user_path(person), method: :delete, class: "float-xs-right btn btn-danger esp"%>
-        <%= link_to "Editar", edit_user_path(person), class: "float-xs-right btn btn-primary esp"%>
-				<% end %>
-				<% end %>
-        <%= link_to "Info", user_path(person), class: "float-xs-right btn btn-info esp"%>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-<div class="aa alert alert-info col-md-7" role="alert">
-  <strong>Esportes e Eventos</strong>
-</div>
-<div class="form">
-  <% @sports.each do |person| %>
-    <div class="card col-md-8">
-      <div class="card-header">
-        <h5><%= person.name %></h5>
-      </div>
-      <div class="card-block">
-        <h5 class="card-title"><%= person.course%></h5>
-        <p class="card-text"><%= person.email%></p>
-        <% if logged_in?%>
-        <% if current_user.hole %>
-        <%= link_to "Excluir", user_path(person), method: :delete, class: "float-xs-right btn btn-danger esp"%>
-        <%= link_to "Editar", edit_user_path(person), class: "float-xs-right btn btn-primary esp"%>
-				<% end %>
-				<% end %>
-        <%= link_to "Info", user_path(person), class: "float-xs-right btn btn-info esp"%>
-      </div>
-    </div>
-  <% end %>
-</div>
-
+<%for i in 0..4%>
+	<div class="aa alert alert-info col-md-7" role="alert">
+	  <strong><%= @coord[i] %></strong>
+	</div>
+	<div class="form">
+		<% @users[i].each do |person| %>
+			<div class="card col-md-8">
+			  <div class="card-header">
+			    <h5><%= person.name %></h5>
+			  </div>
+		  	<div class="card-block">
+		  	  <h5 class="card-title"><%= person.course%></h5>
+		  	  <p class="card-text"><%= person.email%></p>
+					<% if logged_in?%>
+					<% if current_user.hole %>
+					<%= link_to "Excluir", user_path(person), method: :delete, class: "float-xs-right btn btn-danger esp"%>
+					<%= link_to "Editar", edit_user_path(person), class: "float-xs-right btn btn-primary esp"%>
+					<% end %>
+					<% end %>
+					<%= link_to "Info", user_path(person), class: "float-xs-right btn btn-info esp"%>
+		  	</div>
+			</div>	
+		<% end %>
+	</div>
+<% end %>
