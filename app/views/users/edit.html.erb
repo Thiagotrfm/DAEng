@@ -1,6 +1,19 @@
-<h1>Editing User</h1>
-
+<nav class="navbar navbar-dark bg-inverse">
+  <div class="nav navbar-nav">
+    <a class="nav-item nav-link" href="#">Início<span class="sr-only">(current)</span></a>
+    <%= link_to "Equipe", users_path, method: :get, class: "nav-item nav-link active" %>
+    <a class="nav-item nav-link" href="#">Coordenações</a>
+    <% if logged_in? %>
+    <%= link_to "Sair", logout_path(current_user), method: :delete, class: "nav-item nav-link float-xs-right" %>
+    <% end %>
+  </div>
+</nav>
+<% if logged_in? %>
 <%= render 'form', user: @user %>
+<% else %>
+<br>
+<div style="display: inline-block" class="alert alert-warning col-md-5" align="middle" role="alert">
+    <strong>Atenção!</strong> Os membros do diretório não devem se meter onde não são chamados
+</div>
+<% end %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
